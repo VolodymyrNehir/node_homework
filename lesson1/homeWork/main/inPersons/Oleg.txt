@@ -1,4 +1,4 @@
 
-name:Oleg
-city:Lviv
 age:24
+city:Lviv
+name:Oleg

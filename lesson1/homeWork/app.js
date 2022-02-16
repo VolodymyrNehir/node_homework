@@ -7,43 +7,41 @@ fs.mkdir(path.join(__dirname, "main", "online"), {recursive: true}, ((err => {
         console.log(err);
         throw err
     }
-    onlineUser.forEach(users=>{
-        for (let user in users){
-            fs.appendFile(path.join(__dirname,"main","online",`${users.name}.txt`),`\n${user}:${users[user]}`,(err)=>{
-                if (err){
+    onlineUser.forEach(users => {
+        for (let user in users) {
+            fs.appendFile(path.join(__dirname, "main", "online", `${users.name}.txt`), `\n${user}:${users[user]}`, (err) => {
+                if (err) {
                     console.log(err);
                     throw err
                 }
 
-            })
+            });
         }
-    })
+    });
 })));
 fs.mkdir(path.join(__dirname, "main", "inPersons"), ((err) => {
     if (err) {
         console.log(err);
         throw err
     }
-    inPersonsUser.forEach(users=>{
-        for (let user in users){
-            fs.appendFile(path.join(__dirname,"main","inPersons",`${users.name}.txt`),`\n${user}:${users[user]}`,(err)=>{
-                if (err){
+    inPersonsUser.forEach(users => {
+        for (let user in users) {
+            fs.appendFile(path.join(__dirname, "main", "inPersons", `${users.name}.txt`), `\n${user}:${users[user]}`, (err) => {
+                if (err) {
                     console.log(err);
                     throw err
                 }
 
-            })
+            });
         }
-    })
-}))
+    });
+}));
 // create directory
 
 
 let onlineUser = [{name: "Andrii", age: 22, city: "Lviv"}];
 let inPersonsUser = [{name: "Oleg", age: 24, city: "Lviv"}];
 // create users
-
-
 
 
 // const substitute = () => {
