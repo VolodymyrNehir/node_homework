@@ -1,0 +1,4 @@
+
+name:Oleg
+city:Lviv
+age:24
