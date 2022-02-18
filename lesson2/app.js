@@ -22,7 +22,6 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
     const email = users.some(user => user.email === req.body.email);
 
-
     if (email) {
         res.redirect("/err")
         return
@@ -30,31 +29,39 @@ app.post("/login", (req, res) => {
     res.redirect("/users");
     users.push({...req.body, id: ++id}
     );
-    console.log([...users])
 });
 
-app.get("/users", (req, res) => {
-    res.render("users", {users})
+app.get("/users", ({query}, res) => {
+    if (query.city) {
+        res.render("users", {users: users.filter(user => user.city === query.city)})
+        return
+    }
+    if (query.age) {
+        res.render("users", {users: users.filter(user => user.age === query.age)})
+        return
+    }
+    res.render("users", {users});
 });
+
 app.get("/users/:id", (req, res) => {
     const params = req.params;
     if (users[params.id - 1]) {
 
         res.render("userInfo", {user: users[params.id - 1]})
         return
-    };
+    }
+    ;
 });
 
-// app.get("/login",({query},res)=>{
-//   let  usersByQuery = [];
-//     usersByQuery = users.filter(user=> user === query.city)
-//     console.log(usersByQuery)
+app.use((req, res) => {
+        res.redirect("/err")
+    }
+);
 
-
-// });
-
-
-
+app.get("/err", (req, res) => {
+    res.render("err", {err: "notFound"})
+    return
+});
 
 app.listen(1997, () => {
     console.log("PORT  1997")

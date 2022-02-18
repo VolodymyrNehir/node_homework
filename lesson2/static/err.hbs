@@ -8,15 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-<div>
+{{#each err}}
+    <h3>
+    {{this.err}}
 
+    </h3>
+    {{/each}}
 
-        <div>{{user.firstName}}</div>
-        <div>{{user.lastName}}</div>
-        <div>{{user.email}}</div>
-        <div>{{user.city}}</div>
-        <div>{{user.age}}</div>
-
-</div>
 </body>
 </html>
