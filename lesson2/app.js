@@ -13,8 +13,7 @@ app.engine('.hbs', engine({defaultLayout: false}));
 app.set('views', path.join(__dirname, 'static'));
 
 let users = [];
-let id = 0
-
+let id = 0;
 
 app.get("/login", (req, res) => {
     res.render("login")
@@ -23,6 +22,7 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
     const email = users.some(user => user.email === req.body.email);
 
+
     if (email) {
         res.redirect("/err")
         return
@@ -30,6 +30,7 @@ app.post("/login", (req, res) => {
     res.redirect("/users");
     users.push({...req.body, id: ++id}
     );
+    console.log([...users])
 });
 
 app.get("/users", (req, res) => {
@@ -38,11 +39,21 @@ app.get("/users", (req, res) => {
 app.get("/users/:id", (req, res) => {
     const params = req.params;
     if (users[params.id - 1]) {
+
         res.render("userInfo", {user: users[params.id - 1]})
         return
-    }
-
+    };
 });
+
+// app.get("/login",({query},res)=>{
+//   let  usersByQuery = [];
+//     usersByQuery = users.filter(user=> user === query.city)
+//     console.log(usersByQuery)
+
+
+// });
+
+
 
 
 app.listen(1997, () => {
