@@ -36,14 +36,14 @@ fs.mkdir(path.join(__dirname, "main", "inPersons"), ((err) => {
         }
     });
 }));
-// create directory
+create directory
 
 
 let onlineUser = [{name: "Andrii", age: 22, city: "Lviv"}];
 let inPersonsUser = [{name: "Oleg", age: 24, city: "Lviv"}];
 // create users
 
-
+//
 // const substitute = () => {
 //     fs.readFile(path.join(__dirname, "main", "online", "Andrii.txt"), (err, data1) => {
 //         if (err) {
@@ -75,6 +75,6 @@ let inPersonsUser = [{name: "Oleg", age: 24, city: "Lviv"}];
 //     });
 // };
 // substitute();
-
-
-
+//
+//
+//
