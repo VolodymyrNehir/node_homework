@@ -50,19 +50,39 @@ app.get("/users/:id", (req, res) => {
         res.render("userInfo", {user: users[params.id - 1]})
         return
     }
-    ;
 });
 
+/////////// CLASS WORK \\\\\\\\\\\
+
+app.get("/signin", (req, res) => {
+    res.render("signIn");
+});
+
+app.post("/signin", (req, res) => {
+    const {passworld, email} = req.body;
+    const sig = [...users].filter(user => user.email === email && user.passworld === passworld);
+    res.redirect(`/users/${sig[0].id}`);
+});
+// sign in
+
+app.post("/users/:id", (req, res) => {
+    const deleteUser = [...users].filter(user => user.id.toString() !== req.params.id);
+    users = deleteUser;
+    res.redirect("/users");
+});
+// delete
+
 app.use((req, res) => {
-        res.redirect("/err")
+        res.redirect("/err");
     }
 );
 
 app.get("/err", (req, res) => {
-    res.render("err", {err: "notFound"})
-    return
+    res.render("err", {err: "notFound"});
+    return;
 });
+// error
 
 app.listen(1997, () => {
-    console.log("PORT  1997")
+    console.log("PORT  1997");
 });
