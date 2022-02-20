@@ -1,4 +1,4 @@
 
-age:24
+age:22
+name:Andrii
 city:Lviv
-name:Oleg
