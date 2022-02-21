@@ -1,33 +1,13 @@
 const {Router} = require('express');
 let users = require('../db/users');
+const usersController = require('../controllers/usersController');
 
 userRouter = Router();
 
-userRouter.get('/', ({query}, res) => {
-    if (query.city) {
-        res.render("users", {users: users.filter(user => user.city === query.city)})
-        return
-    }
-    if (query.age) {
-        res.render("users", {users: users.filter(user => user.age === query.age)})
-        return
-    }
-    res.render("users", {users});
-});
+userRouter.get('/', usersController.userFilter);
 
-userRouter.get('/:id',(req, res) => {
-    const params = req.params;
-    if (users[params.id - 1]) {
+userRouter.get('/:id', usersController.usersGetId);
 
-        res.render("userInfo", {user: users[params.id - 1]})
-        return
-    }
-});
-
-userRouter.post('/:id',(req, res) => {
-    const deleteUser = [...users].filter(user => user.id.toString() !== req.params.id);
-    users = deleteUser;
-    res.redirect("/users");
-})
+userRouter.post('/:id',usersController.usersFilterId);
 
 module.exports = userRouter
