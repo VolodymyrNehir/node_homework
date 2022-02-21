@@ -60,8 +60,12 @@ app.get("/signin", (req, res) => {
 
 app.post("/signin", (req, res) => {
     const {passworld, email} = req.body;
-    const sig = [...users].filter(user => user.email === email && user.passworld === passworld);
-    res.redirect(`/users/${sig[0].id}`);
+    const sig = users.find(user => user.email === email && user.passworld === passworld);
+    if (sig){
+        res.redirect(`/users/${sig.id}`);
+    }else {
+        res.redirect('/err')
+    }
 });
 // sign in
 

@@ -19,6 +19,8 @@ class usersController {
 
             res.render("userInfo", {user: users[params.id - 1]})
             return
+        } else {
+            res.redirect('/err')
         }
     }
 
