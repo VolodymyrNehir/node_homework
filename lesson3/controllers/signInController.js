@@ -2,7 +2,7 @@ let users = require('../db/users');
 
 class signInController {
     signInRender(req, res) {
-        res.render("signIn");
+        res.render('signIn');
     }
 
     signInFilter(req, res) {
@@ -20,7 +20,7 @@ class signInController {
     deleteUser(req, res) {
         const deleteUser = [...users].filter(user => user.id.toString() !== req.params.id);
         users = deleteUser;
-        res.redirect("/users");
+        res.redirect('/users');
     }
 
 }

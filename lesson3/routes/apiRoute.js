@@ -1,8 +1,9 @@
 const {Router} = require('express');
+const express = require("express");
+
 const userRouter = require('./usersRoute');
 const loginRouter = require('./loginRoute');
 const signInRouter = require('./signInRoute')
-const express = require("express");
 
 const app = express();
 const routes = Router();
@@ -12,12 +13,12 @@ routes.use('/login', loginRouter);
 routes.use('/signin', signInRouter)
 
 app.use((req, res) => {
-        res.redirect("/err");
+        res.redirect('/err');
     }
 );
 
-app.get("/err", (req, res) => {
-    res.render("err", {err: "notFound"});
+app.get('/err', (req, res) => {
+    res.render('err', {err: 'notFound'});
 });
 
 module.exports = routes;

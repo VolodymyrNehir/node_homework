@@ -4,17 +4,17 @@ let id = 0;
 
 class loginController {
     loginRender(req, res) {
-        res.render("login")
+        res.render('login')
     }
 
     loginFilterEmaile(req, res) {
         const email = users.some(user => user.email === req.body.email);
 
         if (email) {
-            res.redirect("/err")
+            res.redirect('/err')
             return
         }
-        res.redirect("/users");
+        res.redirect('/users');
         users.push({...req.body, id: ++id}
         );
     }

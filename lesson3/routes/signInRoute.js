@@ -1,5 +1,5 @@
 const {Router} = require('express');
-let users = require('../db/users');
+
 const signInController = require('../controllers/signInController');
 const singInValid = require('../middleware/singInValid');
 
